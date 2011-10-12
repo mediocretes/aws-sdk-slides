@@ -8,6 +8,8 @@ code-engine: coderay
 
 ->iGoDigital<-
 
+->https://github.com/mediocretes/aws-sdk-slides<-
+
 
 
 What's wrong with right_aws?
