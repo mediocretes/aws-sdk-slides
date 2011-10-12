@@ -10,6 +10,9 @@ code-engine: coderay
 
 ->https://github.com/mediocretes/aws-sdk-slides<-
 
+->https://github.com/amazonwebservices/aws-sdk-for-ruby<-
+
+->http://docs.amazonwebservices.com/AWSRubySDK/latest/<-
 
 
 What's wrong with right_aws?
@@ -23,6 +26,9 @@ You don't seem very angry
 =========================
 
 - (Almost) The only documentation for aws-sdk is the source code
+  - http://docs.amazonwebservices.com/AWSRubySDK/latest/ was terrible, is actually pretty useful now
+  - The forums will cause cancer
+  - You can always look at the source
 - They love to rebase
 - It is very raw, like EC2 (but powerful, like EC2)
 
