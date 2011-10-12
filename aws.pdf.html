@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <title>Untitled Slide Show</title>
+   
+   
+
+<style>
+html, body { margin: 0; padding: 0; }
+
+body { font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; }
+
+a:link, a:visited { color: black; }
+
+h1 { font-size: 30pt;  }
+h2 { font-size: 28pt;  }
+h3 { font-size: 25pt;  }
+p, li, dt, dd, td, th { font-size: 18pt; }
+
+pre { font-size: 14pt;  }
+pre.small { font-size: 11pt; }
+
+pre.code {
+        background-color: azure;
+        padding: 5px;
+      }
+     
+ul { list-style-type: square; }    
+   
+.center { text-align: center; }   
+     
+.slide { page-break-after: always;
+         min-height: 100mm;
+         padding: 40px;
+         
+         border: 1px dotted black;
+
+/*      
+  background: -moz-linear-gradient( top, maroon, red);
+*/
+       }
+
+/* styles for built-in coderay syntax highlighting theme */
+
+.CodeRay {
+  background-color: hsl(0,0%,95%);
+  border: 1px solid silver;
+  color: black;
+}
+.CodeRay pre {
+  margin: 0px;
+}
+
+span.CodeRay { white-space: pre; border: 0px; padding: 2px; }
+
+table.CodeRay { border-collapse: collapse; width: 100%; padding: 2px; }
+table.CodeRay td { padding: 2px 4px; vertical-align: top; }
+
+.CodeRay .line-numbers {
+  background-color: hsl(180,65%,90%);
+  color: gray;
+  text-align: right;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+.CodeRay .line-numbers a {
+  background-color: hsl(180,65%,90%) !important;
+  color: gray !important;
+  text-decoration: none !important;
+}
+.CodeRay .line-numbers a:target { color: blue !important; }
+.CodeRay .line-numbers .highlighted { color: red !important; }
+.CodeRay .line-numbers .highlighted a { color: red !important; }
+.CodeRay span.line-numbers { padding: 0px 4px; }
+.CodeRay .line { display: block; float: left; width: 100%; }
+.CodeRay .code { width: 100%; }
+.CodeRay .code pre { overflow: auto; }
+
+.CodeRay .debug { color: white !important; background: blue !important; }
+
+.CodeRay .annotation { color:#007 }
+.CodeRay .attribute-name { color:#b48 }
+.CodeRay .attribute-value { color:#700 }
+.CodeRay .binary { color:#509 }
+.CodeRay .char .content { color:#D20 }
+.CodeRay .char .delimiter { color:#710 }
+.CodeRay .char { color:#D20 }
+.CodeRay .class { color:#B06; font-weight:bold }
+.CodeRay .class-variable { color:#369 }
+.CodeRay .color { color:#0A0 }
+.CodeRay .comment { color:#777 }
+.CodeRay .comment .char { color:#444 }
+.CodeRay .comment .delimiter { color:#444 }
+.CodeRay .complex { color:#A08 }
+.CodeRay .constant { color:#036; font-weight:bold }
+.CodeRay .decorator { color:#B0B }
+.CodeRay .definition { color:#099; font-weight:bold }
+.CodeRay .delimiter { color:black }
+.CodeRay .directive { color:#088; font-weight:bold }
+.CodeRay .doc { color:#970 }
+.CodeRay .doc-string { color:#D42; font-weight:bold }
+.CodeRay .doctype { color:#34b }
+.CodeRay .entity { color:#800; font-weight:bold }
+.CodeRay .error { color:#F00; background-color:#FAA }
+.CodeRay .escape  { color:#666 }
+.CodeRay .exception { color:#C00; font-weight:bold }
+.CodeRay .float { color:#60E }
+.CodeRay .function { color:#06B; font-weight:bold }
+.CodeRay .global-variable { color:#d70 }
+.CodeRay .hex { color:#02b }
+.CodeRay .imaginary { color:#f00 }
+.CodeRay .include { color:#B44; font-weight:bold }
+.CodeRay .inline { background-color: hsla(0,0%,0%,0.07); color: black }
+.CodeRay .inline-delimiter { font-weight: bold; color: #666 }
+.CodeRay .instance-variable { color:#33B }
+.CodeRay .integer  { color:#00D }
+.CodeRay .key .char { color: #60f }
+.CodeRay .key .delimiter { color: #404 }
+.CodeRay .key { color: #606 }
+.CodeRay .keyword { color:#080; font-weight:bold }
+.CodeRay .label { color:#970; font-weight:bold }
+.CodeRay .local-variable { color:#963 }
+.CodeRay .namespace { color:#707; font-weight:bold }
+.CodeRay .octal { color:#40E }
+.CodeRay .operator { }
+.CodeRay .predefined { color:#369; font-weight:bold }
+.CodeRay .predefined-constant { color:#069 }
+.CodeRay .predefined-type { color:#0a5; font-weight:bold }
+.CodeRay .preprocessor { color:#579 }
+.CodeRay .pseudo-class { color:#00C; font-weight:bold }
+.CodeRay .regexp .content { color:#808 }
+.CodeRay .regexp .delimiter { color:#404 }
+.CodeRay .regexp .modifier { color:#C2C }
+.CodeRay .regexp { background-color:hsla(300,100%,50%,0.06); }
+.CodeRay .reserved { color:#080; font-weight:bold }
+.CodeRay .shell .content { color:#2B2 }
+.CodeRay .shell .delimiter { color:#161 }
+.CodeRay .shell { background-color:hsla(120,100%,50%,0.06); }
+.CodeRay .string .char { color: #b0b }
+.CodeRay .string .content { color: #D20 }
+.CodeRay .string .delimiter { color: #710 }
+.CodeRay .string .modifier { color: #E40 }
+.CodeRay .string { background-color:hsla(0,100%,50%,0.05); }
+.CodeRay .symbol .content { color:#A60 }
+.CodeRay .symbol .delimiter { color:#630 }
+.CodeRay .symbol { color:#A60 }
+.CodeRay .tag { color:#070 }
+.CodeRay .type { color:#339; font-weight:bold }
+.CodeRay .value { color: #088; }
+.CodeRay .variable  { color:#037 }
+
+.CodeRay .insert { background: hsla(120,100%,50%,0.12) }
+.CodeRay .delete { background: hsla(0,100%,50%,0.12) }
+.CodeRay .change { color: #bbf; background: #007; }
+.CodeRay .head { color: #f8f; background: #505 }
+.CodeRay .head .filename { color: white; }
+
+.CodeRay .delete .eyecatcher { background-color: hsla(0,100%,50%,0.2); border: 1px solid hsla(0,100%,45%,0.5); margin: -1px; border-bottom: none; border-top-left-radius: 5px; border-top-right-radius: 5px; }
+.CodeRay .insert .eyecatcher { background-color: hsla(120,100%,50%,0.2); border: 1px solid hsla(120,100%,25%,0.5); margin: -1px; border-top: none; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; }
+
+.CodeRay .insert .insert { color: #0c0; background:transparent; font-weight:bold }
+.CodeRay .delete .delete { color: #c00; background:transparent; font-weight:bold }
+.CodeRay .change .change { color: #88f }
+.CodeRay .head .head { color: #f4f }
+
+
+
+
+/*
+for princexml (CSS3 paged media support)
+@page { size: A4 landscape }
+*/
+</style>
+
+</head>
+<body>
+
+<div class="presentation">
+
+<div class='slide '>
+<h1>Semi-Precious Gems: AWS-SDK</h1><p style="text-align:center;">Look guys, I stopped using keynote</p>
+
+<p style="text-align:center;">Nathan D Acuff</p>
+
+<p style="text-align:center;">iGoDigital</p>
+
+
+</div>
+<div class='slide '>
+<h1>What's wrong with right_aws?</h1><ul>
+<li>Nothing, shut up</li>
+<li>Amazon probably won't break it</li>
+<li>It's not as new as aws-sdk</li>
+</ul>
+
+
+
+</div>
+<div class='slide '>
+<h1>You don't seem very angry</h1><ul>
+<li>(Almost) The only documentation for aws-sdk is the source code</li>
+<li>They love to rebase</li>
+<li>It is very raw, like EC2 (but powerful, like EC2)</li>
+</ul>
+
+
+
+</div>
+<div class='slide '>
+<h1>It only does everything</h1><ul>
+<li>Manage Your Instances</li>
+<li>Do Things with your Load Balancer</li>
+<li>Identity Access Management</li>
+<li>Poorly named ORM</li>
+<li>S3</li>
+<li>SimpleDB</li>
+<li>Simple Email Service</li>
+<li>Notifications</li>
+<li>Simple Queue Service</li>
+<li>Key and Token Management</li>
+</ul>
+
+
+
+</div>
+<div class='slide '>
+<h1>Managing instances</h1><!-- begin code{} -->
+
+
+<div class='CodeRay'><pre 'code'>
+<table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+</pre></td>
+  <td class="code"><pre>
+instances = ec2.images[<span class="string"><span class="delimiter">'</span><span class="content">sweet-ruby-ami</span><span class="delimiter">'</span></span>].run_instances(<span class="integer">5</span>)
+<span class="comment"># or</span>
+mongo_instances = ec2.instances.create(<span class="symbol">:image_id</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">mongo-ami</span><span class="delimiter">'</span></span>, 
+    <span class="symbol">:count</span> =&gt; <span class="integer">3</span>, type =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">m2.16xlarge</span><span class="delimiter">&quot;</span></span>
+    <span class="symbol">:block_device_mappings</span> =&gt; { <span class="string"><span class="delimiter">&quot;</span><span class="content">/dev/sdm</span><span class="delimiter">&quot;</span></span> = &gt; { 
+        <span class="symbol">:volume_size</span> =&gt; <span class="integer">1000</span>, 
+        <span class="symbol">:delete_on_termination</span> =&gt; <span class="predefined-constant">false</span>}
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">/dev/sdn</span><span class="delimiter">&quot;</span></span> =&gt; {
+        <span class="symbol">:volume_size</span> =&gt; <span class="integer">1000</span>,
+        <span class="symbol">:delete_on_termination</span> =&gt; <span class="predefined-constant">false</span>}})
+</pre></td>
+</tr></table>
+</pre></div>
+
+
+<!-- end code -->
+
+
+
+</div>
+<div class='slide '>
+<h1>Load Balancing</h1><!-- begin code{} -->
+
+
+<div class='CodeRay'><pre 'code'>
+<table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+</pre></td>
+  <td class="code"><pre>
+balancer = elb.load_balancers.create(<span class="string"><span class="delimiter">'</span><span class="content">balance-you-some-ruby</span><span class="delimiter">'</span></span>,
+    <span class="symbol">:availability_zones</span> =&gt; [<span class="string"><span class="delimiter">&quot;</span><span class="content">us-east-1a</span><span class="delimiter">&quot;</span></span>],
+    <span class="symbol">:listeners</span> =&gt; [{
+        <span class="symbol">:port</span> =&gt; <span class="integer">80</span>,
+        <span class="symbol">:protocol</span> =&gt; <span class="symbol">:http</span>,
+        <span class="symbol">:instance_port</span> =&gt; <span class="integer">80</span>,
+        <span class="symbol">:instance_protocol</span> =&gt; <span class="symbol">:http</span>
+    }])
+balancer.register instances_from_the_last_slide
+balancer.health.inject({}) <span class="keyword">do</span> |all, inst| 
+    all[inst[<span class="symbol">:instance</span>]] = inst[<span class="symbol">:state</span>]; all
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</pre></div>
+
+
+<!-- end code -->
+
+
+
+</div>
+<div class='slide '>
+<h1>Identity and Access Management</h1><!-- begin code{} -->
+
+
+<div class='CodeRay'><pre 'code'>
+<table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+</pre></td>
+  <td class="code"><pre>
+nate = users.create(<span class="string"><span class="delimiter">'</span><span class="content">nate</span><span class="delimiter">'</span></span>, <span class="symbol">:path</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">/staff/cie/nate</span><span class="delimiter">'</span></span>)
+nate.login_profile.password = <span class="string"><span class="delimiter">'</span><span class="content">password</span><span class="delimiter">'</span></span>
+nate.policies[<span class="string"><span class="delimiter">&quot;</span><span class="content">CrashDatabase</span><span class="delimiter">&quot;</span></span>] = <span class="constant">Policy</span>.new <span class="keyword">do</span> |p|
+    policy.allow(<span class="symbol">:actions</span> =&gt; [<span class="string"><span class="delimiter">'</span><span class="content">ec2:TerminateInstances</span><span class="delimiter">'</span></span>],
+        <span class="symbol">:resources</span> =&gt; some_instance,
+        <span class="symbol">:principals</span> =&gt; <span class="symbol">:any</span>).where
+<span class="comment">#Amazon policies are super complex</span>
+<span class="comment">#also there are user groups</span>
+</pre></td>
+</tr></table>
+</pre></div>
+
+
+<!-- end code -->
+
+
+
+</div>
+<div class='slide '>
+<h1>Object Mapper</h1><p style="text-align:center;">Not really an ORM</p>
+
+<!-- begin code{} -->
+
+
+<div class='CodeRay'><pre 'code'>
+<table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+</pre></td>
+  <td class="code"><pre>
+<span class="keyword">class</span> <span class="class">Product</span> &lt; <span class="constant">AWS</span>::<span class="constant">Record</span>::<span class="constant">Base</span>
+    string_attr <span class="symbol">:name</span>
+    datetime_attr <span class="symbol">:release_date</span>
+    float_attr <span class="symbol">:price</span> <span class="comment">#yeah, I know</span>
+    string_attr <span class="symbol">:description</span>
+    string_Attr <span class="symbol">:tags</span>, <span class="symbol">:set</span> =&gt; <span class="predefined-constant">true</span>
+    timestamps
+<span class="keyword">end</span>
+p = <span class="constant">Product</span>.new
+p.name = <span class="string"><span class="delimiter">'</span><span class="content">Twilight</span><span class="delimiter">'</span></span>
+p.price = <span class="float">7.99</span>
+p.tags = [<span class="string"><span class="delimiter">'</span><span class="content">teen</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">paranormal</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">romance</span><span class="delimiter">'</span></span>]
+p.save
+</pre></td>
+</tr></table>
+</pre></div>
+
+
+<!-- end code -->
+
+
+
+</div>
+<div class='slide '>
+<h1>More Object Mapper</h1><!-- begin code{} -->
+
+
+<div class='CodeRay'><pre 'code'>
+<table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+</pre></td>
+  <td class="code"><pre>
+<span class="keyword">class</span> <span class="class">PageView</span> &lt; <span class="constant">AWS</span>::<span class="constant">Record</span>::<span class="constant">Base</span>
+   string_attr <span class="symbol">:url</span>
+   string_attr <span class="symbol">:user_id</span>
+   validates_presence_of <span class="symbol">:url</span>
+<span class="keyword">end</span>
+
+pv = <span class="constant">PageView</span>.new
+pv.valid?
+pv.save <span class="comment"># should throw up</span>
+</pre></td>
+</tr></table>
+</pre></div>
+
+
+<!-- end code -->
+
+
+
+</div>
+<div class='slide '>
+<h1>Even More Object Mapper</h1><!-- begin code{} -->
+
+
+<div class='CodeRay'><pre 'code'>
+<table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+</pre></td>
+  <td class="code"><pre>
+p = <span class="constant">Product</span>[<span class="string"><span class="delimiter">&quot;</span><span class="content">UUID-which-is-the-product-id</span><span class="delimiter">&quot;</span></span>]
+p = <span class="constant">Product</span>.first(<span class="string"><span class="delimiter">&quot;</span><span class="content">release_date &gt; ?</span><span class="delimiter">&quot;</span></span>, <span class="constant">Time</span>.now)
+<span class="constant">Product</span>.find <span class="keyword">do</span> |p|
+    do_some_stuff_to p
+<span class="keyword">end</span>
+<span class="keyword">class</span> <span class="class">Product</span> &lt; <span class="constant">AWS</span>::<span class="constant">Record</span>::<span class="constant">Base</span>
+    scope <span class="symbol">:available</span>, where(<span class="string"><span class="delimiter">&quot;</span><span class="content">release_date &lt; ?</span><span class="delimiter">&quot;</span></span>, <span class="constant">Time</span>.now)
+<span class="keyword">end</span>
+new_released_books = <span class="constant">Product</span>.available.top_10.order(<span class="symbol">:release_date</span>, <span class="symbol">:desc</span>)
+</pre></td>
+</tr></table>
+</pre></div>
+
+
+<!-- end code -->
+
+
+<p style="text-align:center;">Lazy, Optimistic, Not Relational</p>
+
+<p style="text-align:center;">Notice how I didn't mention joins?</p>
+
+
+</div>
+<div class='slide '>
+<h1>S3</h1><!-- begin code{} -->
+
+
+<div class='CodeRay'><pre 'code'>
+<table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+</pre></td>
+  <td class="code"><pre>
+bucket = s3.buckets.create(<span class="string"><span class="delimiter">&quot;</span><span class="content">pictures-of-cats</span><span class="delimiter">&quot;</span></span>)
+bucket.objects.each <span class="keyword">do</span> |obj|
+    puts object.key <span class="comment">#lazy!</span>
+<span class="keyword">end</span>
+kitty = <span class="string"><span class="delimiter">'</span><span class="content">pictures/cats/2011/october/week1/kitty0473.jpg</span><span class="delimiter">'</span></span>
+bucket.objects[<span class="string"><span class="delimiter">'</span><span class="content">kitty.jpg</span><span class="delimiter">'</span></span>].write(<span class="constant">File</span>.read(kitty))
+<span class="constant">File</span>.open(<span class="string"><span class="delimiter">&quot;</span><span class="content">kitty.jpg</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">w</span><span class="delimiter">'</span></span>) <span class="keyword">do</span> |f|
+    f.write(bucket.objects[<span class="string"><span class="delimiter">'</span><span class="content">kitty.jpg</span><span class="delimiter">'</span></span>].read)
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</pre></div>
+
+
+<!-- end code -->
+
+
+<p style="text-align:center;"><img src="kitty.jpg" alt="kitty" /></p>
+
+
+</div>
+<div class='slide '>
+<h1>Bet You Thought We Were Done With SimpleDB</h1><!-- begin code{} -->
+
+
+<div class='CodeRay'><pre 'code'>
+<table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+</pre></td>
+  <td class="code"><pre>
+<span class="comment">#If you don't like pretending you have an ORM...</span>
+products = sdb.domains.create(<span class="string"><span class="delimiter">'</span><span class="content">books</span><span class="delimiter">'</span></span>)
+item = products.items[<span class="string"><span class="delimiter">'</span><span class="content">twilight</span><span class="delimiter">'</span></span>]
+eds = item.attributes[<span class="string"><span class="delimiter">'</span><span class="content">editions</span><span class="delimiter">'</span></span>]
+eds.add <span class="string"><span class="delimiter">'</span><span class="content">hardcover</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">softcover</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">kindle</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">audiobook</span><span class="delimiter">'</span></span> <span class="comment">#immediate</span>
+products.delete[<span class="string"><span class="delimiter">'</span><span class="content">twlight</span><span class="delimiter">'</span></span>]
+
+<span class="comment">#and pretty much everything else you'd expect</span>
+</pre></td>
+</tr></table>
+</pre></div>
+
+
+<!-- end code -->
+
+
+
+</div>
+<div class='slide '>
+<h1>Simple Email Service</h1><!-- begin code{} -->
+
+
+<div class='CodeRay'><pre 'code'>
+<table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+</pre></td>
+  <td class="code"><pre>
+config.action_mailer.delivery_method = <span class="symbol">:amazon_ses</span>
+
+<span class="comment">#or, to do things directly</span>
+ses.verify(<span class="string"><span class="delimiter">'</span><span class="content">nacuff@igodigital.com</span><span class="delimiter">'</span></span>)
+ses.send_mail(<span class="symbol">:subject</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">More Cats!</span><span class="delimiter">'</span></span>)<span class="comment">#and the rest of the hash</span>
+</pre></td>
+</tr></table>
+</pre></div>
+
+
+<!-- end code -->
+
+
+<p style="text-align:center;">Also support for quotas, stats, access control, bounces, complains, and so on</p>
+
+
+</div>
+<div class='slide '>
+<h1>Simple Notification Service</h1><!-- begin code{} -->
+
+
+<div class='CodeRay'><pre 'code'>
+<table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+</pre></td>
+  <td class="code"><pre>
+sns.topics[<span class="string"><span class="delimiter">'</span><span class="content">server_alert</span><span class="delimiter">'</span></span>].subscribe(<span class="string"><span class="delimiter">'</span><span class="content">nacuff@igodigital.com</span><span class="delimiter">'</span></span>)
+sns.topics[<span class="string"><span class="delimiter">'</span><span class="content">server_alert</span><span class="delimiter">'</span></span>].publish(<span class="string"><span class="delimiter">'</span><span class="content">hey, FYI, the server is down</span><span class="delimiter">'</span></span>)
+
+suckers = sns.topics[<span class="string"><span class="delimiter">'</span><span class="content">server_alert</span><span class="delimiter">'</span></span>].subscriptions.select <span class="keyword">do</span> |s|
+    s.protocol == <span class="symbol">:email</span>
+<span class="keyword">end</span>  <span class="comment">#get all the email subscribed to this</span>
+    
+sns.topics[<span class="string"><span class="delimiter">'</span><span class="content">admin</span><span class="delimiter">'</span></span>].publish(<span class="string"><span class="delimiter">&quot;</span><span class="content">emailed </span><span class="delimiter">&quot;</span></span> + suckers.map(&amp;<span class="symbol">:endpoint</span>))
+</pre></td>
+</tr></table>
+</pre></div>
+
+
+<!-- end code -->
+
+
+
+</div>
+<div class='slide '>
+<h1>SQS</h1><ul>
+<li>Everything is text</li>
+<li>Up to 8k up to 64k</li>
+<li>Messages arrive late and multiple times</li>
+<li>You might want to use threads to write</li>
+</ul>
+
+
+
+</div>
+<div class='slide '>
+<h1>More SQS</h1><!-- begin code{} -->
+
+
+<div class='CodeRay'><pre 'code'>
+<table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+</pre></td>
+  <td class="code"><pre>
+queue = sqs.queues.create(<span class="string"><span class="delimiter">'</span><span class="content">add_cats_to_images</span><span class="delimiter">'</span></span>)
+message = { <span class="symbol">:s3_location</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">your_details_here</span><span class="delimiter">'</span></span>,
+    <span class="symbol">:s3_cat_location</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">your_cat_here</span><span class="delimiter">'</span></span>,
+    <span class="symbol">:output_location</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">your_filename_here</span><span class="delimiter">'</span></span>
+    <span class="symbol">:message_sent</span> =&gt; <span class="constant">Time</span>.new}
+queue.send_message message.to_yaml
+
+<span class="comment">#or if you care about speed</span>
+<span class="constant">Thread</span>.new { queue.send_message... }
+</pre></td>
+</tr></table>
+</pre></div>
+
+
+<!-- end code -->
+
+
+
+</div>
+<div class='slide '>
+<h1>Receiving SQS Messages</h1><!-- begin code{} -->
+
+
+<div class='CodeRay'><pre 'code'>
+<table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+</pre></td>
+  <td class="code"><pre>
+queue.poll{ |message| ... }
+daemonization_loop.do{ queue.get{ |message| ... }}
+<span class="comment">#there are other techniques, but this one manages all your details</span>
+</pre></td>
+</tr></table>
+</pre></div>
+
+
+<!-- end code -->
+
+
+<ul>
+<li>Messages are probably locked immediately</li>
+<li>Messages automatically unlock after a delay (5 minutes?)</li>
+<li>Queue size is a magical, capricious animal</li>
+</ul>
+
+
+
+</div>
+<div class='slide '>
+<h1>Let's talk Idempotency</h1><p style="text-align:center;"> f(x) = f(f(x))</p>
+
+<!-- begin code{} -->
+
+
+<div class='CodeRay'><pre 'code'>
+<table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+</pre></td>
+  <td class="code"><pre>
+queue.get <span class="keyword">do</span> |message|
+    <span class="comment">#bad</span>
+    db.items[message[<span class="symbol">:id</span>]].counter += <span class="integer">1</span>
+    <span class="comment">#okay</span>
+    db.items[<span class="symbol">:message_counts</span>].create(message[<span class="symbol">:unique_id</span>])
+    db.items[message[<span class="symbol">:item_id</span>]].counter = db.items[<span class="symbol">:message_counts</span>].count
+    <span class="comment">#If you need to do a lot of work...</span>
+    output = images[message[<span class="symbol">:output_location</span>]]
+    <span class="keyword">return</span> <span class="keyword">if</span> output.updated_since message[<span class="symbol">:message_sent</span>]
+    img = images[message[<span class="symbol">:s3_location</span>]]
+    cats = images[message[<span class="symbol">:s3_cat_location</span>]]
+    <span class="keyword">return</span> <span class="keyword">if</span> output.updated_since message[<span class="symbol">:message_sent</span>]
+    img.apply_cats cats
+    <span class="keyword">return</span> <span class="keyword">if</span> output.updated_since message[<span class="symbol">:message_sent</span>]
+    output.save    
+    <span class="comment">#DO NOT WRITE TO YOUR INPUT</span>
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</pre></div>
+
+
+<!-- end code -->
+
+
+
+</div>
+<div class='slide '>
+<h1>Key and Token Management</h1><!-- begin code{} -->
+
+
+<div class='CodeRay'><pre 'code'>
+<table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+</pre></td>
+  <td class="code"><pre>
+<span class="comment">#this will last forever</span>
+s3 = <span class="constant">AWS</span>::<span class="constant">S3</span>.new(<span class="symbol">:access_key_id</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">your_real_key</span><span class="delimiter">'</span></span>, 
+    <span class="symbol">:secret_access_key</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">your_other_real_key</span><span class="delimiter">'</span></span>)
+    
+<span class="comment">#this will not</span>
+token = <span class="constant">AWS</span>::<span class="constant">STS</span>.new
+session = token.new_session
+s3 = <span class="constant">AWS</span>::<span class="constant">S3</span>.new(session.credentials)  
+</pre></td>
+</tr></table>
+</pre></div>
+
+
+<!-- end code -->
+
+
+
+</div>
+<div class='slide '>
+<h1>It is time to drink</h1><ul>
+<li>Holy crap that was a marathon</li>
+<li>This gem seems huge</li>
+<li>I only skimmed over a lot of the features</li>
+<li>We are only using the SQS portion in production (so far)</li>
+</ul>
+
+
+<p style="text-align:center;"> <img src="kitty2.jpg" alt="more_cat" /></p></div>
+
+
+  </div> <!-- presentation -->
+</body>
+</html> 
+
